@@ -40,8 +40,106 @@ Clean up the interval when the component unmounts using clearInterval to prevent
 
 ## PROGRAM
 
+## App.jsx:
+```
+import React, { useState } from 'react';
+import './App.css';
 
+const images = [
+  '/im.jpeg', '/aa.jpeg'
+];
+
+function App() {
+  const [index, setIndex] = useState(0);
+
+  const showPrevious = () => {
+    setIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+  };
+
+  const showNext = () => {
+    setIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+  };
+
+  return (
+    <div className="app">
+      <h1 className="title">Ro-Ko Carousel</h1>
+      <div className="carousel">
+        <img src={images[index]} alt="Ro-Ko" className="carousel-image" />
+      </div>
+      <div className="buttons">
+        <button onClick={showPrevious}>Previous</button>
+        <button onClick={showNext}>Next</button>
+      </div>
+      <footer className="footer">K Muni Tejeshwar 212223040102</footer>
+    </div>
+  );
+}
+
+export default App;
+
+```
+## App.css:
+```
+.app {
+  text-align: center;
+  margin-top: 40px;
+  background-color: #f0f4f8;  /* light background color */
+  width: 600px;               /* set fixed width */
+  height: 600px;              /* set fixed height */
+  margin-left: auto;          /* center horizontally */
+  margin-right: auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.carousel {
+  width: 500px;
+  height: auto;
+  margin: 0 auto; /* centers the carousel horizontally */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #aaa;
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* centers the image if needed */
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* New footer style */
+.footer {
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #555;
+  font-style: italic;
+}
+
+```
 ## OUTPUT
+![image](https://github.com/user-attachments/assets/6a7c114f-136c-4949-9877-eb0f7d35e3b3)
+![image](https://github.com/user-attachments/assets/6c173015-4b90-4a82-b6ef-f0dc66aad5f8)
 
 
 ## RESULT
